@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <title>Jobseekers - Edit Freelancer Profile</title>
+    </h:head>
+
+    <h:body>
+        <div class = "sidenav">
+            <img src="./resources/images/logo.jpeg"/>
+            <a href="freelancer-profile.xhtml">Go Back</a>
+        </div>
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        template="./templates/new-template.xhtml">
+            <ui:define name="content">
+
+                <h:form>
+                    <table>
+                        <h3>Edit Profile</h3>
+                        <tr>
+                            <td><h:outputText value = "First Name" /></td>
+                            <td><h:inputText value ="#{sessionInfo.firstName}"/></td>
+                        </tr>
+
+                        <tr>
+                            <td><h:outputText value = "Last Name" /></td>
+                            <td><h:inputText value ="#{sessionInfo.lastName}"/></td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value = "Skills" /></td>
+                            <td><h:inputText value ="#{sessionInfo.skills}"/></td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value = "Message to job provider" /></td>
+                            <td><h:inputText value ="#{sessionInfo.userMessage}"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><h:commandButton value="Submit" action="#{sessionInfo.editFProfile()}">
+                                </h:commandButton>
+                            </td>
+                        </tr>
+                    </table>
+
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core">
+
+    <h:head>
+        <title>Jobseekers - Login Page</title>
+    </h:head>
+
+    <h:body>
+        <div class = "sidenav">
+            <img src="./resources/images/logo.jpeg"/>
+        </div>
+
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        template="./templates/new-template.xhtml">
+            <ui:define name="content">
+
+                <h:form>
+                    <h2>Login</h2>
+
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td><h:outputText value = "#{sessionInfo.invalidMessage}" /></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td><h:outputText value = "Email ID" /></td>
+                            <td><h:inputText id = "userEmail" value ="#{sessionInfo.email}">
+                                    <f:validator validatorId = "fieldValidation" />
+                                </h:inputText>
+                            </td>
+                            <td>
+                                <h:message for = "userEmail" style = "color:blue" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><h:outputText value = "Password" /></td>
+                            <td><h:inputSecret id = "inputPassword"  value ="#{sessionInfo.password}">
+                                    <f:validator validatorId = "fieldValidation" />
+                                </h:inputSecret>
+                            </td>
+                            <td>
+                                <h:message for = "inputPassword" style = "color:red" />
+                            </td>
+                        </tr>  
+                        
+                        
+
+                        <tr>
+                            <td></td>
+                            <td><h:commandButton value="Login" action="#{sessionInfo.check()}">
+                                </h:commandButton>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

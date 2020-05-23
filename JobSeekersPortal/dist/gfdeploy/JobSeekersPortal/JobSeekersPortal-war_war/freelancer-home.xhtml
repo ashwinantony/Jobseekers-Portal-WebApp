@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Jobseekers - Freelancer Homepage</title>
+    </h:head>
+
+    <h:body>
+        <div class = "sidenav">
+            <img src="./resources/images/logo.jpeg"/>
+            <h:form class = "logoutButton">
+                <h:commandButton action="#{sessionInfo.userLogout()}" value = "Logout"/>
+            </h:form>
+            <a href="freelancer-profile.xhtml">Profile Information</a>
+            <a href="job-results.xhtml">View All Open Jobs</a>
+        </div>
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        template="./templates/new-template.xhtml">
+            <ui:define name="content">
+
+                <h:form>
+                    <h1>Freelancer Homepage</h1>
+                    <br/>
+
+                    <table>
+                        <tr>
+                            <td><h:inputText value="#{sessionInfo.searchByJobID}" /></td>
+                            <td><h:commandButton action="#{sessionInfo.searchById()}" value="Search By Job ID"/></td>
+                        </tr>
+                    </table>
+
+                    <h3>Search Results by Job ID</h3>
+                    <h:dataTable value="#{sessionInfo.searchById()}" var="jobList1" border="0">
+                        <h:column>
+                            <f:facet name="header">Job ID</f:facet>
+                                #{jobList1.jobID}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Job Title</f:facet>
+                                #{jobList1.jobTitle}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Job Description</f:facet>
+                                #{jobList1.jobDescription}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Offered Pay</f:facet>
+                                #{jobList1.jobPay}
+                        </h:column>                
+                    </h:dataTable>
+                    <br/><br/>
+
+                    <table>
+                        <tr>
+                            <td><h:inputText value="#{sessionInfo.keywords}" /></td>
+                            <td><h:commandButton action="#{sessionInfo.searchByKey()}" value="Search By Job Keyword"/></td>
+                        </tr>
+                    </table>
+                </h:form>
+                
+                <h:form>
+                    <h3>Search Results by Job Keyword</h3>
+                    <h:dataTable value="#{sessionInfo.searchByKey()}" var="jobList" border="0">
+                        <h:column>
+                            <f:facet name="header">Job ID</f:facet>
+                                #{jobList.jobID}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Job Title</f:facet>
+                                #{jobList.jobTitle}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Job Description</f:facet>
+                                #{jobList.jobDescription}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Offered Pay</f:facet>
+                                #{jobList.jobPay}
+                        </h:column>                
+                    </h:dataTable>
+                    <br/><br/>
+                </h:form>
+
+                <h:form>
+                    <table>
+                        <tr>
+                            <td><h:outputText value = "Enter Job ID" /></td>
+                            <td><h:inputText value="#{sessionInfo.jobID}"/></td>
+
+                            <td><h:commandButton action="#{sessionInfo.jobApply()}" value="Apply"/></td>
+                            <td><h:commandButton action="#{sessionInfo.jobRevoke()}" value="Revoke"/></td>
+                        </tr>
+                    </table>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

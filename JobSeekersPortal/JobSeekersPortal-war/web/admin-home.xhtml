@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Jobseekers - Admin Homepage</title>
+    </h:head>
+
+    <h:body>
+        <div class = "sidenav">
+            <img src="./resources/images/logo.jpeg"/>
+            <h:form class = "logoutButton">
+                <h:commandButton action="#{sessionInfo.userLogout()}" value = "Logout"/>
+            </h:form>
+            <a href="view-job-on-database.xhtml">View Jobs on Database</a>
+            <a href="add-new-user.xhtml">Register User</a>
+        </div>
+
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        template="./templates/new-template.xhtml">
+            <ui:define name="content">
+
+                <h:form>
+                    <div> 
+                        <h1>Admin Homepage</h1>
+                    </div>
+                    <br/>
+
+                    <div>
+                        <table>
+                            <tr>
+                                <td><h:outputText value = "Enter User ID : " /></td>
+                                <td><h:inputText value="#{admin.userID}"/></td>
+                                <td><h:commandButton action="#{admin.dAdminUsers()}" value="Remove User"/>  </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br/><br/>
+                    <div>
+                        <h3>Job Providers</h3>
+                        <h:dataTable value="#{admin.viewAllProviders()}" var="prov" border="0">
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                    #{prov.userID}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">First Name</f:facet>
+                                    #{prov.firstName}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Last Name</f:facet>
+                                    #{prov.lastName}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Email</f:facet>
+                                    #{prov.userEmail}
+                            </h:column>                
+                        </h:dataTable>
+                    </div>
+                    <br/><br/>
+
+                    <div>
+                        <h3>Freelancers</h3>
+                        <h:dataTable value="#{admin.viewAllFreelancers()}" var="free" border="0">
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                    #{free.userID}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">First Name</f:facet>
+                                    #{free.firstName}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Last Name</f:facet>
+                                    #{free.lastName}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Email</f:facet>
+                                    #{free.userEmail}
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
+

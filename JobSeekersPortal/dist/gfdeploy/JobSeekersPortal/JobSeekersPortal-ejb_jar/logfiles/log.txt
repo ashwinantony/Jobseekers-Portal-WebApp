@@ -1,0 +1,16 @@
+job applied : nidhin@jsp.com requested for job ID: 3
+job request revoked : nidhin@jsp.com revoked request for job ID: 3
+job applied : nidhin@jsp.com requested for job ID: 3
+job request revoked : nidhin@jsp.com revoked request for job ID: 3
+job applied : nidhin@jsp.com requested for job ID: 3
+job closed : nidhin@jsp.com requested for job ID: 3has been accpeted by job provider
+job applied : nidhin@jsp.com requested for job ID: 3
+job request revoked : nidhin@jsp.com revoked request for job ID: 3
+job applied : nidhin@jsp.com requested for job ID: 3
+job closed : nidhin@jsp.com requested for job ID: 3has been accpeted by job provider
+job applied : nidhin@jsp.com requested for job ID: 4
+job request revoked : nidhin@jsp.com revoked request for job ID: 4
+job applied : nidhin@jsp.com requested for job ID: 4
+job request revoked : nidhin@jsp.com revoked request for job ID: 4
+job applied : nidhin@jsp.com requested for job ID: 4
+job closed : nidhin@jsp.com requested for job ID: 4has been accpeted by job provider

@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"/>
+
+    <h:head>
+        <title>Jobseekers - User Registration</title>
+    </h:head>
+
+    <h:body>
+        <div class = "sidenav">
+            <img src="./resources/images/logo.jpeg"/>
+            <a href="admin-home.xhtml">Home</a>
+        </div>
+
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        template="./templates/new-template.xhtml">
+            <ui:define name="content">
+                <h:form >
+                    <h1>User Registration Form</h1>
+                    <br/>
+
+                    <table>
+                        <tr>
+                            <td><h:outputText value = "First Name*" /></td>
+                            <td><h:inputText id = "firstName" value="#{admin.firstName}">
+                                    <f:validator validatorId = "fieldValidation" />
+                                </h:inputText>
+                            </td>
+                            <td>
+                                <h:message for = "firstName" style = "color: tomato" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value = "Last Name*" /></td>
+                            <td><h:inputText id = "lastName" value="#{admin.lastName}">
+                                    <f:validator validatorId = "fieldValidation" />
+                                </h:inputText>
+                            </td>
+                            <td>
+                                <h:message for = "lastName" style = "color: tomato" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value = "Email ID*" /></td>
+                            <td><h:inputText id = "emailID" value="#{admin.userEmail}">
+                                    <f:validator validatorId = "fieldValidation" />
+                                </h:inputText>
+                            </td>
+                            <td>
+                                <h:message for = "emailID" style = "color: tomato" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value = "User Password*" /></td>
+                            <td><h:inputText id = "userPassword" value="#{admin.userPassword}">
+                                    <f:validator validatorId = "fieldValidation" />
+                                </h:inputText>
+                            </td>
+                            <td>
+                                <h:message for = "userPassword" style = "color: tomato" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value = "User Role*" /></td>
+                            <td>
+                                <h:selectOneMenu value = "#{admin.userRole}">
+                                    <f:selectItem itemValue="Provider" itemLabel="Provider"/>
+                                    <f:selectItem itemValue="Freelancer" itemLabel="Freelancer"/>
+                                </h:selectOneMenu>
+                            </td>
+                            <td>
+                                <h:message for = "userRole" style = "color:blue" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><i style = "color: red">*mandatory field</i></td>
+                            <td><h:commandButton action="#{admin.addUser()}" value="Submit"/></td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+</html>

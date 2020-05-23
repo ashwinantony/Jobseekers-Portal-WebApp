@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"/>
+
+    <h:head>
+        <title>Jobseekers - Job creation page</title>
+    </h:head>
+
+    <h:body>
+        <div class = "sidenav">
+            <img src="./resources/images/logo.jpeg"/>
+            <a href="provider-page.xhtml">Home</a>
+        </div>
+
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        template="./templates/new-template.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <h1>New job form</h1>
+                    <br/>
+                    <table>
+                        <tr>
+                            <td><h:outputText value = "Job Title*" /></td>
+                            <td><h:inputText id = "jobTitle" value="#{sessionInfo.title}">
+                                    <f:validator validatorId = "fieldValidation" />
+                                </h:inputText>
+                            </td>
+                            <td>
+                                <h:message for = "jobTitle" style = "color: tomato" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h:outputText value = "Description*" /><br/><br/>
+                                <h:outputText value = "(max 200 letters)" />
+                            </td>
+                            <td><h:inputTextarea id = "description" rows = "10" cols = "60" value="#{sessionInfo.desc}">
+                                    <f:validator validatorId = "fieldValidation" />
+                                </h:inputTextarea>
+                            </td>
+                            <td>
+                                <h:message for = "description" style = "color: tomato" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value = "Pay*" /></td>
+                            <td><h:inputText id = "payment" value="#{sessionInfo.pay}">
+                                    <f:validator validatorId = "fieldValidation" />
+                                </h:inputText>
+                            </td>
+                            <td>
+                                <h:message for = "payment" style = "color: tomato" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value = "Keywords*" /></td>
+                            <td><h:inputTextarea id = "keywords" cols = "60" value="#{sessionInfo.keywords}">
+                                    <f:validator validatorId = "fieldValidation" />
+                                </h:inputTextarea>
+                            </td>
+                            <td>
+                                <h:message for = "keywords" style = "color: tomato" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><i style = "color: red">*mandatory field</i></td>
+                            <td><h:commandButton action="#{sessionInfo.postJob}" value="Post"/></td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+
+</html>

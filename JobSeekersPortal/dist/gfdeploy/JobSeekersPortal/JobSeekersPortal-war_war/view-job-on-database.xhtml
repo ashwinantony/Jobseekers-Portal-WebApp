@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Jobseekers - All job list</title>
+    </h:head>
+
+    <h:body>
+        <div class = "sidenav">
+            <img src="./resources/images/logo.jpeg"/>
+            <a href="admin-home.xhtml">Home</a>
+        </div>
+
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        template="./templates/new-template.xhtml">
+            <ui:define name="content">
+
+                <h:form>
+                    <div>
+                        <table>
+                            <td><h:outputText value = "Enter Job ID : " /></td>
+                            <td><h:inputText value="#{admin.jobID}"/></td>
+                            <td><h:commandButton action="#{admin.admindeleteJobs()}" value="Remove Job"/></td>
+                        </table>
+                    </div>
+                    <br/>
+
+                    <div>
+                        <h1>All available jobs in Jobseekers portal</h1>
+                    </div>
+
+                    <div>
+                        <h3>Open Jobs</h3>
+                        <h:dataTable value="#{admin.viewAllOpenJobs()}" var="jobList" border="0">
+                            <h:column>
+                                <f:facet name="header">Job ID</f:facet>
+                                    #{jobList.jobID}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Job Title</f:facet>
+                                    #{jobList.jobTitle}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Job Description</f:facet>
+                                    #{jobList.jobDescription}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Offered Payment</f:facet>
+                                    #{jobList.jobPay}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Job Provider Email ID</f:facet>
+                                    #{jobList.addedUser}
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                    <br/>
+
+                    <div>
+                        <h3>Closed/Completed Jobs</h3>
+                        <h:dataTable value="#{admin.viewAllClosedJobs()}" var="jl" border="0">
+                            <h:column>
+                                <f:facet name="header">Job ID</f:facet>
+                                    #{jl.jobID}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Title</f:facet>
+                                    #{jl.jobTitle}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Description</f:facet>
+                                    #{jl.jobDescription}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Offered Payment</f:facet>
+                                    #{jl.jobPay}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Status</f:facet>
+                                    #{jl.jobStatus}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Job Provider Email ID</f:facet>
+                                    #{jl.addedUser}
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

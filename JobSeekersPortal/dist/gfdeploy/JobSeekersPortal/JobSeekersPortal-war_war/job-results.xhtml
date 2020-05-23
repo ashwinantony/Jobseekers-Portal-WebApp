@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Jobseekers - Open jobs</title>
+    </h:head>
+
+    <h:body>
+        <div class = "sidenav">
+            <img src="./resources/images/logo.jpeg"/>
+            <a href="freelancer-home.xhtml">Home</a>
+        </div>
+
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        template="./templates/new-template.xhtml">
+            <ui:define name="content">
+
+                <h:form>
+                    <table>
+                        <tr>
+                            <td><h:outputText value = "Enter Job ID : " /></td>
+                            <td><h:inputText value="#{sessionInfo.jobID}"/></td>
+                        </tr>
+                    </table>
+                    <br/><br/>
+
+                    <h:commandButton action="#{sessionInfo.jobApply()}" value="Apply"/>
+                    <h:commandButton action="#{sessionInfo.jobRevoke()}" value="Revoke"/>
+                    <br/><br/>
+
+                    <h3>All Open Jobs</h3>
+                    <h:dataTable value="#{sessionInfo.browseOpenJobs()}" var="jobList" border="0">
+                        <h:column>
+                            <f:facet name="header">Job ID</f:facet>
+                                #{jobList.jobID}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Job Title</f:facet>
+                                #{jobList.jobTitle}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Job Description</f:facet>
+                                #{jobList.jobDescription}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Offered Pay</f:facet>
+                                #{jobList.jobPay}
+                        </h:column>                
+                    </h:dataTable>
+
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
